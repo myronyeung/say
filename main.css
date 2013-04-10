@@ -1,20 +1,47 @@
+html, body {
+	height: 100%;
+}
+
+html {
+	font-size: 18px;
+}
+
 * {
 font-family: HelveticaNeue, "Helvetica Neue", Verdana, Arial, sans-serif;
 }
 
-#testDrop {
+.word {
 	position: absolute;
+	top: -1rem;
+	font-size: 1rem;
+}
+
+.slow {
+	transition: top 4s linear;
+}
+
+.fast {
 	transition: top 2s linear;
-	top: 0;
 }
 
-#testDrop.drop {
-	top: 100px;
+.drop {
+	top: 100%;
 }
 
+/* Not really needed since word falls out of sight in the end. */
+/* Used with transitionend event */
 .dropped {
 	text-decoration: line-through;
 	opacity: 0.2;
+}
+
+#results {
+position: relative;
+overflow: hidden;
+border: 1px solid #ddd;
+padding: 1rem;
+min-height: 4rem;
+height: 30%;
 }
 
 .button {
@@ -67,15 +94,6 @@ font-size: 20px;
 text-align: center;
 color: #777;
 visibility: hidden;
-}
-#results {
-position: relative;
-font-size: 14px;
-font-weight: bold;
-border: 1px solid #ddd;
-padding: 15px;
-text-align: left;
-min-height: 150px;
 }
 #start_button {
 border: 0;

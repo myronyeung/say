@@ -96,7 +96,8 @@ testDrop.addEventListener("transitionend", handleDroppedWord, false);
 testDrop.classList.add("drop");
 
 function handleDroppedWord(event) {
-	this.classList.add("dropped");
+	this.classList.add("dropped"); // Not really needed since the word has already dropped out of sight.
+	console.log("Sorry, you missed this word: " + this.innerHTML);
 	//console.dir(this);
 	//console.dir(event);
 }
@@ -180,9 +181,7 @@ if (!('webkitSpeechRecognition' in window)) {
     	phrase = "",
 		words = new Array(),
 		score = document.querySelector(".score"),
-    	i, // Loop counters
-    	j,
-    	k;
+    	i, j, k; // Loop counters
     
     for (i = event.resultIndex; i < event.results.length; ++i) {
     	phrase = event.results[i][0].transcript;
