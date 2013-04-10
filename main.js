@@ -70,6 +70,27 @@ updateCountry();
 select_dialect.selectedIndex = 6;
 showInfo('info_start');
 
+var tempWordArray = new Array();
+tempWordArray[0] = "web";
+tempWordArray[1] = "speech";
+tempWordArray[2] = "demonstration";
+tempWordArray[3] = "speak";
+tempWordArray[4] = "now";
+tempWordArray[5] = "사랑";
+tempWordArray[6] = "아니";
+tempWordArray[7] = "미국";
+tempWordArray[8] = "한국";
+tempWordArray[9] = "여성";
+tempWordArray[10] = "아름";
+
+function displayWords() {
+	var wordsDisplay = document.querySelector(".words");
+		i;
+	for(i = 0; i < tempWordArray.length; ++i) {
+		wordsDisplay.innerHTML += (tempWordArray[i] + ", ");
+	}
+}
+
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
     select_dialect.remove(i);
@@ -145,12 +166,38 @@ if (!('webkitSpeechRecognition' in window)) {
   };
 
   recognition.onresult = function(event) {
-    var interim_transcript = '';
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
+    var interim_transcript = "",
+    	phrase = "",
+		words = new Array(),
+		score = document.querySelector(".score"),
+    	i, // Loop counters
+    	j,
+    	k;
+    
+    for (i = event.resultIndex; i < event.results.length; ++i) {
+    	phrase = event.results[i][0].transcript;
       if (event.results[i].isFinal) {
-        final_transcript += event.results[i][0].transcript;
+        final_transcript += phrase; // .transcript in this case returns one or more words that was captured after a pause!
+      	console.log("Final result: " + phrase);
       } else {
-        interim_transcript += event.results[i][0].transcript;
+        interim_transcript += phrase; // .transcript in this case returns one or more word that are guesses!
+      	console.log("Interim result: " + phrase);
+      	
+      	phrase = phrase.replace(/^\s\s*/, '').replace(/\s\s*$/, ''); // Remove beginning and trailing spaces.
+      	words = phrase.split(" ");
+      	console.log(words.length);
+      	for(j = 0; j < tempWordArray.length; ++j) {
+			for(k = 0; k < words.length; ++k) {      		
+				if(words[k] === tempWordArray[j]) {
+					score.innerHTML = (+score.innerHTML + 1);
+					console.log("Matched word: " + words[k]);
+					console.log(tempWordArray.length);
+					tempWordArray.splice(j, 1); // Remove the correct word from the array otherwise it may be counted multiple times.
+					
+					console.log(tempWordArray.length);
+				}
+			}
+		}
       }
     }
     final_transcript = capitalize(final_transcript);

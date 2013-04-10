@@ -2,13 +2,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Web Speech API Demo</title>
+<title>Pronunciation game utilizing the Web Speech API</title>
 <link href="main.css" media="all" rel="stylesheet" type="text/css" />
 </head>
-<body>
-<h1 class="center" id="headline">
-  <a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">
-    Web Speech API</a> Demonstration</h1>
+<body onload="displayWords()">
+<h1 class="center" id="headline">Pronunciation game utilizing the Web Speech API</h1>
+<h2>Your score is <span class="score">0</span></h2>
+<h3>Words to say: <span class="words"></span></h3>
+
 <div id="info">
   <p id="info_start">Click on the microphone icon and begin speaking.</p>
   <p id="info_speak_now">Speak now.</p>
@@ -60,6 +61,7 @@
   </div>
 </div>
 <p>Heavily borrowed from the Google Chrome <a href="https://github.com/GoogleChrome/webplatform-samples">Web Speech API Demo</a></p>
+<p><a href="http://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">Web Speech API</a></p>
 <script src="main.js"></script>
 </body>
 </html>

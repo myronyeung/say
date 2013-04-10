@@ -1,4 +1,4 @@
 say
 ===
 
-Vocabulary game utilizing Web Speech API.
+Pronunciation game utilizing the Web Speech API.
