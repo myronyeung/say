@@ -1,6 +1,22 @@
 * {
 font-family: HelveticaNeue, "Helvetica Neue", Verdana, Arial, sans-serif;
 }
+
+#testDrop {
+	position: absolute;
+	transition: top 2s linear;
+	top: 0;
+}
+
+#testDrop.drop {
+	top: 100px;
+}
+
+.dropped {
+	text-decoration: line-through;
+	opacity: 0.2;
+}
+
 .button {
 background: -webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);
 border: 1px solid #076bd2;
@@ -53,6 +69,7 @@ color: #777;
 visibility: hidden;
 }
 #results {
+position: relative;
 font-size: 14px;
 font-weight: bold;
 border: 1px solid #ddd;

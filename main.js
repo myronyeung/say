@@ -90,6 +90,16 @@ function displayWords() {
 		wordsDisplay.innerHTML += (tempWordArray[i] + ", ");
 	}
 }
+var testDrop = document.querySelector("#testDrop");
+// Reference: https://developer.mozilla.org/en-US/docs/CSS/Tutorials/Using_CSS_transitions
+testDrop.addEventListener("transitionend", handleDroppedWord, false);
+testDrop.classList.add("drop");
+
+function handleDroppedWord(event) {
+	this.classList.add("dropped");
+	//console.dir(this);
+	//console.dir(event);
+}
 
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
