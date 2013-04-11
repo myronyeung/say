@@ -102,6 +102,12 @@ function handleDroppedWord(event) {
 	//console.dir(event);
 }
 
+function getRandom(max, min) {
+	"use strict"; 
+	var minimum = min || 0;
+	return Math.floor(Math.random() * (max - minimum + 1)) + minimum;
+}
+
 function updateCountry() {
   for (var i = select_dialect.options.length - 1; i >= 0; i--) {
     select_dialect.remove(i);
